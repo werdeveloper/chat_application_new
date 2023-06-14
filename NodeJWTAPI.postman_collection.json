@@ -1,0 +1,660 @@
+{
+	"info": {
+		"_postman_id": "fc06e734-0294-4234-a919-e47a4b54bafb",
+		"name": "NodeJWTAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.data.token);\r",
+									"console.log(jsonData.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "deep@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "deep@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/users/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "336"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"150-WxmXYd2uRomQwJj9qO2cZqcQggs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 05:24:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 1,\n    \"msg\": \"User login successfully\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJOYW1lIjoiRGVlcCIsInVzZXJFbWFpbCI6ImRlZXBAZ21haWwuY29tIiwidXNlclJvbGUiOjEsImlhdCI6MTY0MDQ5NjI4OSwiZXhwIjoxNjQwNTgyNjg5LCJhdWQiOiIiLCJpc3MiOiIhNjEyQTk0QDlwIiwic3ViIjoiIn0.BUUOhuajtUrivjJnDWAeDQPR78zWPXhqFM13nya31_4\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "deep2",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "deep2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/createUser",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"createUser"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "deep2",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "deep2@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/users/createUser",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"createUser"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-nqy1jJV4Z0Xdh/Bi91OKz45QeF4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 05:26:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 1,\n    \"error\": null,\n    \"msg\": \"User created\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"email\": \"deep2@gmail.com\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "deep",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "deep@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/updateUser/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"updateUser",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "deep",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "deep@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/users/updateUser/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"updateUser",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"69-fSblWHhBIxVpzMnbF7NNepnbaM8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 05:32:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 1,\n    \"msg\": \"User updated successfully\",\n    \"data\": [\n        {\n            \"id\": \"1\",\n            \"name\": \"deep\",\n            \"email\": \"deep@gmail.com\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "All USers List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/getUsers",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"getUsers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All USers List",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/users/getUsers",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"getUsers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "234"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ea-cDX6phQGSquEfmEzrkcDlshucCM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 05:31:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 1,\n    \"response\": \"call get user api\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Deep\",\n            \"email\": \"deep@gmail.com\",\n            \"created_date\": \"2021-12-25T18:17:00.000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"deep2\",\n            \"email\": \"deep2@gmail.com\",\n            \"created_date\": \"2021-12-26T05:26:13.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "User Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/getUsers/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"getUsers",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User Details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/users/getUsers/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"getUsers",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"66-OKwqT6vCh2uvJ7mINZnZsHIGPwQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 05:31:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 1,\n    \"msg\": \"call get single user api\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Deep\",\n            \"email\": \"deep@gmail.com\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "User Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/deleteUser/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"deleteUser",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/users/deleteUser/2",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"deleteUser",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-ZQol81ZPeOLNWuMcBAfr/5drrX4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 05:33:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 1,\n    \"msg\": \"User deleted successfully\",\n    \"data\": [\n        {\n            \"id\": \"2\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
